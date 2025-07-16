@@ -6,7 +6,7 @@ pipeline {
     stages {
         stage('Notify Start') {
             steps {
-                slackSend channel: 'youtubejenkins', message: 'Job Started'
+                slackSend channel: 'kp-test', message: 'Job Started'
             }
 
         }
@@ -14,7 +14,7 @@ pipeline {
             steps{
                 // mvn test
                 sh "mvn test"
-                slackSend channel: 'youtubejenkins', message: 'Job Started'
+                slackSend channel: 'kp-test', message: 'Tests executed'
                 
             }
             
@@ -52,11 +52,11 @@ pipeline {
         }
         success{
             echo "========pipeline executed successfully ========"
-             slackSend channel: 'youtubejenkins', message: 'Success'
+             slackSend channel: 'kp-test', message: 'Success'
         }
         failure{
             echo "========pipeline execution failed========"
-             slackSend channel: 'youtubejenkins', message: 'Job Failed'
+             slackSend channel: 'kp-test', message: 'Job Failed'
         }
     }
 }
